@@ -1,0 +1,46 @@
+<html>
+<header>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.22/b-1.6.5/b-html5-1.6.5/fh-3.1.7/r-2.2.6/rg-1.1.2/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.22/b-1.6.5/b-html5-1.6.5/fh-3.1.7/r-2.2.6/rg-1.1.2/datatables.min.js"></script>
+
+<script type="text/javascript" src="js/papaparse.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+
+	Papa.parse("list.csv", {
+                    download: true,
+					header: true,
+					skipEmptyLines: true,
+					delimiter: ",",
+                    complete: function (results) {
+                        if ( results.errors.length ) {
+                            console.error(results);
+                        }
+                        else {
+							let columns = [];
+							for (i=0; i<results.meta.fields.length; i++){
+								columns.push({"data": results.meta.fields[i], "title": results.meta.fields[i]});
+							}
+                            $('#main_list').DataTable( {
+								data: results.data,
+								columns: columns
+							} );
+                        }
+                    }
+                });
+
+    
+} );
+</script>
+</header>
+
+<body>
+
+<table id="main_list" class="display" style="width:100%">
+</table>
+
+</body>
+</html>
