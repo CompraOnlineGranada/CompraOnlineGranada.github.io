@@ -10,6 +10,58 @@
 <script type="text/javascript">
 $(document).ready(function() {
 
+	let language = {
+		"sProcessing":     "Procesando...",
+		"sLengthMenu":     "Mostrar _MENU_ comercios",
+		"sZeroRecords":    "No se encontraron resultados",
+		"sEmptyTable":     "Ningún dato disponible en esta tabla",
+		"sInfo":           "Mostrando comercios del _START_ al _END_ de un total de _TOTAL_ comercios",
+		"sInfoEmpty":      "Mostrando comercios del 0 al 0 de un total de 0 comercios",
+		"sInfoFiltered":   "(filtrado de un total de _MAX_ comercios)",
+		"sInfoPostFix":    "",
+		"sSearch":         "Buscar:",
+		"sUrl":            "",
+		"sInfoThousands":  ",",
+		"sLoadingRecords": "Cargando...",
+		"oPaginate": {
+			"sFirst":    "Primero",
+			"sLast":     "Último",
+			"sNext":     "Siguiente",
+			"sPrevious": "Anterior"
+		},
+		"oAria": {
+			"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+			"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+		},
+		"buttons": {
+			"copy": "Copiar",
+			"colvis": "Visibilidad"
+		}
+	};
+
+	let renders = {
+		"Nombre": function(data, type, row) {
+			if (!row.Web.startsWith("http")) {
+				row.Web = "https://" + row.Web;
+			}
+			return type === 'display' ?
+                        '<a href="' + row.Web + '">'+ data +'</a>' :
+                        data;
+		},
+		"Web": function(data, type, row) {
+			if (!data.startsWith("http")) {
+				data = "https://" + data;
+			}
+			return type === 'display' ?
+                        '<a href="' + data + '">'+ data +'</a>' :
+                        data;
+		},
+		"Twitter / Instagram": function(data, type, row) {
+			return type === 'display' ?
+                        '<a href="' + data + '">'+ data +'</a>' :
+                        data;
+		},
+	};
 	Papa.parse("list.csv", {
                     download: true,
 					header: true,
@@ -22,11 +74,18 @@ $(document).ready(function() {
                         else {
 							let columns = [];
 							for (i=0; i<results.meta.fields.length; i++){
-								columns.push({"data": results.meta.fields[i], "title": results.meta.fields[i]});
+								columns.push({
+									"data": results.meta.fields[i], 
+									"title": results.meta.fields[i],
+									"render": renders[results.meta.fields[i]]
+								});
 							}
                             $('#main_list').DataTable( {
 								data: results.data,
-								columns: columns
+								columns: columns,
+								language: language,
+								pageLength: 20,
+								lengthMenu: [ [20, 50, -1], [20, 50, "Todos"] ]
 							} );
                         }
                     }
