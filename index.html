@@ -1,7 +1,14 @@
 <html>
 <header>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.22/b-1.6.5/b-html5-1.6.5/fh-3.1.7/r-2.2.6/rg-1.1.2/datatables.min.css"/>
- 
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<style>
+* {
+	font-family: 'Roboto', sans-serif;
+
+}
+</style>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.22/b-1.6.5/b-html5-1.6.5/fh-3.1.7/r-2.2.6/rg-1.1.2/datatables.min.js"></script>
@@ -10,6 +17,8 @@
 <script type="text/javascript">
 $(document).ready(function() {
 
+	// Translations
+	// https://datatables.net/reference/option/language
 	let language = {
 		"sProcessing":     "Procesando...",
 		"sLengthMenu":     "Mostrar _MENU_ comercios",
@@ -39,6 +48,8 @@ $(document).ready(function() {
 		}
 	};
 
+	// Rendering of columns
+	// https://datatables.net/manual/data/renderers
 	let renders = {
 		"Nombre": function(data, type, row) {
 			if (!row.Web.startsWith("http")) {
@@ -62,6 +73,18 @@ $(document).ready(function() {
                         data;
 		},
 	};
+
+	// Responsive classes per column
+	// https://datatables.net/extensions/responsive/examples/column-control/classes.html
+	let classNames = {
+		"Nombre": "all",
+		"Tipo": "all",
+		"Municipio": "tablet-l",
+		"Web": "tablet-l",
+		"Twitter / Instagram": "desktop"
+	};
+
+	// CSV Parser
 	Papa.parse("list.csv", {
                     download: true,
 					header: true,
@@ -74,10 +97,12 @@ $(document).ready(function() {
                         else {
 							let columns = [];
 							for (i=0; i<results.meta.fields.length; i++){
+								let name = results.meta.fields[i];
 								columns.push({
-									"data": results.meta.fields[i], 
-									"title": results.meta.fields[i],
-									"render": renders[results.meta.fields[i]]
+									"data": name, 
+									"title": name,
+									"render": renders[name],
+									"className": classNames[name]
 								});
 							}
                             $('#main_list').DataTable( {
@@ -91,8 +116,6 @@ $(document).ready(function() {
                         }
                     }
                 });
-
-    
 } );
 </script>
 </header>
