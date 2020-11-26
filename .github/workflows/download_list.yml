@@ -5,8 +5,8 @@ name: Update list
 # Controls when the action will run. 
 on:
   # Automatic run every hour
-  schedule:
-    - cron:  '0 * * * *'
+  # schedule:
+  #  - cron:  '0 * * * *'
       
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
