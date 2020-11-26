@@ -78,18 +78,18 @@ $(document).ready(function() {
 	let renders = {
 		"Nombre": function(data, type, row) {
 			data = data.trim();
-			if (!row.Web.startsWith("http")) {
-				row.Web = "https://" + row.Web;
+			if (!row['Encuéntrales online'].startsWith("http")) {
+				row['Encuéntrales online'] = "https://" + row['Encuéntrales online'];
 			}
 			return type === 'display' ?
-                        '<a href="' + row.Web + '">'+ data +'</a>' :
+                        '<a href="' + row['Encuéntrales online'] + '">'+ data +'</a>' :
                         data;
 		},
 		"Municipio": function(data, type, row) {
 			data = data.trim();
 			return data;
 		},
-		"Web": function(data, type, row) {
+		"Encuéntrales online": function(data, type, row) {
 			data = data.trim();
 			if (!data.startsWith("http")) {
 				data = "https://" + data;
@@ -98,7 +98,7 @@ $(document).ready(function() {
                         '<a href="' + data + '">'+ data +'</a>' :
                         data;
 		},
-		"Twitter / Instagram": function(data, type, row) {
+		"Otro contacto online": function(data, type, row) {
 			data = data.trim();
 			return type === 'display' ?
                         '<a href="' + data + '">'+ data +'</a>' :
@@ -110,10 +110,10 @@ $(document).ready(function() {
 	// https://datatables.net/extensions/responsive/examples/column-control/classes.html
 	let classNames = {
 		"Nombre": "all",
-		"Tipo": "min-tablet-l",
+		"¿Qué venden?": "min-tablet-l",
 		"Municipio": "desktop",
-		"Web": "desktop",
-		"Twitter / Instagram": "desktop"
+		"Encuéntrales online": "desktop",
+		"Otro contacto online": "desktop"
 	};
 
 	// CSV Parser
