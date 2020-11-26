@@ -22,7 +22,9 @@ jobs:
             persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
             fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
       - name: Create local changes
-          run: wget -o list.csv https://docs.google.com/spreadsheets/d/e/2PACX-1vTa4oOoSgESArLWXsxa1eLsgUUso4K86EIhj-m4tWoSYMZn-DnO6178Fhyj31FxjfcN3tBQTFX6aisu/pub?gid=0&single=true&output=csv
+          run: |
+            wget -o list.csv https://docs.google.com/spreadsheets/d/e/2PACX-1vTa4oOoSgESArLWXsxa1eLsgUUso4K86EIhj-m4tWoSYMZn-DnO6178Fhyj31FxjfcN3tBQTFX6aisu/pub?gid=0&single=true&output=csv
+            sed '1,5d' list.csv > list.csv
       - name: Commit files
           run: |
             git config --local user.email "action@github.com"
