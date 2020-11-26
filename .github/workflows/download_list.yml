@@ -18,20 +18,20 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job          
     steps:
       - uses: actions/checkout@master
-          with:
+        with:
             persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
             fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
-      - name: Create local changes
-          run: |
+      - name: Download CSV file and remove unneeded lines
+        run: |
             wget -o list.csv https://docs.google.com/spreadsheets/d/e/2PACX-1vTa4oOoSgESArLWXsxa1eLsgUUso4K86EIhj-m4tWoSYMZn-DnO6178Fhyj31FxjfcN3tBQTFX6aisu/pub?gid=0&single=true&output=csv
-            sed '1,5d' list.csv > list.csv
+            sed '1,5d' list.csv > list.tmp; mv list.tmp list.csv
       - name: Commit files
-          run: |
+        run: |
             git config --local user.email "action@github.com"
             git config --local user.name "GitHub Action"
             git commit -m "Update list" -a
       - name: Push changes
-          uses: ad-m/github-push-action@master
-          with:
+        uses: ad-m/github-push-action@master
+        with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             branch: ${{ github.ref }}
