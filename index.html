@@ -1,172 +1,239 @@
-<html>
-<header>
-<meta charset = "utf-8">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.22/b-1.6.5/b-html5-1.6.5/r-2.2.6/sp-1.2.1/sl-1.3.1/datatables.min.css"/>
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-<style>
-* {
-	font-family: 'Roboto', sans-serif;
-	font-size: 17px;
-}
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset = "utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<link rel="shortcut icon" href="favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.22/r-2.2.6/sp-1.2.1/sl-1.3.1/datatables.min.css"/>
 
-/* search box */
-#main_list_filter {
-	float: left;
-	text-align: left;
-}
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<style>
+	* {
+		font-family: 'Roboto', sans-serif;
+	}
 
-/* pagination */
-#main_list_paginate {
-	text-align: center;
-	float: none;
-}
+	/* search box */
+	#main_list_filter {
+		float: left;
+		text-align: left;
+	}
 
-/* buttons */
-div.dt-buttons {
-	float: right;
-}
-</style>
- 
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.22/b-1.6.5/b-html5-1.6.5/r-2.2.6/sp-1.2.1/sl-1.3.1/datatables.min.js"></script>
-<script type="text/javascript" src="js/papaparse.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
+	/* pagination */
+	#main_list_paginate {
+		text-align: center;
+		float: none;
+	}
 
-	// Translations
-	// https://datatables.net/reference/option/language
-	let language = {
-		"sProcessing":     "Procesando...",
-		"sLengthMenu":     "Mostrar _MENU_ comercios",
-		"sZeroRecords":    "No se encontraron resultados",
-		"sEmptyTable":     "Ningún dato disponible en esta tabla",
-		"sInfo":           "Mostrando comercios del _START_ al _END_ de un total de _TOTAL_ comercios",
-		"sInfoEmpty":      "Mostrando comercios del 0 al 0 de un total de 0 comercios",
-		"sInfoFiltered":   "(filtrado de un total de _MAX_ comercios)",
-		"sInfoPostFix":    "",
-		"sSearch":         "Buscar:",
-		"sUrl":            "",
-		"sInfoThousands":  ",",
-		"sLoadingRecords": "Cargando...",
-		"oPaginate": {
-			"sFirst":    "Primero",
-			"sLast":     "Último",
-			"sNext":     "Siguiente",
-			"sPrevious": "Anterior"
-		},
-		"oAria": {
-			"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-			"sSortDescending": ": Activar para ordenar la columna de manera descendente"
-		},
-		"buttons": {
-			"copy": "Copiar",
-			"colvis": "Visibilidad"
-		},
-		"searchPanes": {
-                "title": {
-                    _: 'Filtros seleccionados - %d',
-                    0: 'Sin filtros',
-                    1: 'Un filtro seleccionado',
-                },
-				"clearMessage": 'Borrar filtros',
-                "collapse": {0: 'Filtros', _: 'Filtros (%d)'}
-            }
-	};
+	/* buttons */
+	div.dt-buttons {
+		float: right;
+	}
+	</style>
+	 
+	<script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.22/r-2.2.6/sp-1.2.1/sl-1.3.1/datatables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/plug-ins/preview/scrollToTop/dataTables.scrollToTop.min.js"></script>
+	<script type="text/javascript" src="js/papaparse.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
 
-	// Rendering of columns
-	// https://datatables.net/manual/data/renderers
-	let renders = {
-		"Nombre": function(data, type, row) {
-			data = data.trim();
-			if (!row['Encuéntrales online'].startsWith("http")) {
-				row['Encuéntrales online'] = "https://" + row['Encuéntrales online'];
-			}
-			return type === 'display' ?
-                        '<a href="' + row['Encuéntrales online'] + '">'+ data +'</a>' :
-                        data;
-		},
-		"Municipio": function(data, type, row) {
-			data = data.trim();
-			return data;
-		},
-		"Encuéntrales online": function(data, type, row) {
-			data = data.trim();
-			if (!data.startsWith("http")) {
-				data = "https://" + data;
-			}
-			return type === 'display' ?
-                        '<a href="' + data + '">'+ data +'</a>' :
-                        data;
-		},
-		"Otro contacto online": function(data, type, row) {
-			data = data.trim();
-			return type === 'display' ?
-                        '<a href="' + data + '">'+ data +'</a>' :
-                        data;
-		},
-	};
+		// Translations
+		// https://datatables.net/reference/option/language
+		let language = {
+			"sProcessing":     "Procesando...",
+			"sLengthMenu":     "Mostrar _MENU_ comercios",
+			"sZeroRecords":    "No se encontraron resultados",
+			"sEmptyTable":     "Ningún dato disponible en esta tabla",
+			"sInfo":           "Mostrando comercios del _START_ al _END_ de un total de _TOTAL_ comercios",
+			"sInfoEmpty":      "Mostrando comercios del 0 al 0 de un total de 0 comercios",
+			"sInfoFiltered":   "(filtrado de un total de _MAX_ comercios)",
+			"sInfoPostFix":    "",
+			"sSearch":         "Buscar:",
+			"sUrl":            "",
+			"sInfoThousands":  ",",
+			"sLoadingRecords": "Cargando...",
+			"oPaginate": {
+				"sFirst":    "Primero",
+				"sLast":     "Último",
+				"sNext":     "Siguiente",
+				"sPrevious": "Anterior"
+			},
+			"oAria": {
+				"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+				"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+			},
+			"buttons": {
+				"copy": "Copiar",
+				"colvis": "Visibilidad"
+			},
+			"searchPanes": {
+					"title": {
+						_: 'Filtros seleccionados - %d',
+						0: 'Sin filtros',
+						1: 'Un filtro seleccionado',
+					},
+					"clearMessage": 'Borrar filtros',
+					"collapse": {0: 'Filtros', _: 'Filtros (%d)'}
+				}
+		};
 
-	// Responsive classes per column
-	// https://datatables.net/extensions/responsive/examples/column-control/classes.html
-	let classNames = {
-		"Nombre": "all",
-		"¿Qué venden?": "min-tablet-l",
-		"Municipio": "desktop",
-		"Encuéntrales online": "desktop",
-		"Otro contacto online": "desktop"
-	};
+		// Rendering of columns
+		// https://datatables.net/manual/data/renderers
+		let renders = {
+			"Nombre": function(data, type, row) {
+				data = data.trim();
+				if (!row['Encuéntrales online'].startsWith("http")) {
+					row['Encuéntrales online'] = "https://" + row['Encuéntrales online'];
+				}
+				return type === 'display' ?
+							'<a href="' + row['Encuéntrales online'] + '">'+ data +'</a>' :
+							data;
+			},
+			"Municipio": function(data, type, row) {
+				data = data.trim();
+				return data;
+			},
+			"Encuéntrales online": function(data, type, row) {
+				data = data.trim();
+				if (!data.startsWith("http")) {
+					data = "https://" + data;
+				}
+				return type === 'display' ?
+							'<a href="' + data + '">'+ data +'</a>' :
+							data;
+			},
+			"Otro contacto online": function(data, type, row) {
+				data = data.trim();
+				let text = data;
+				if (data.includes("instagram")) {
+					text = '<img src="instagram.svg" alt="Instagram" width="32" height="32" title="Instagram">';
+				}
+				else if (data.includes("facebook")) {
+					text = '<img src="facebook.svg" alt="Facebook" width="32" height="32" title="Facebook">';
+				}
+				else if (data.includes("twitter")) {
+					text = '<img src="twitter.svg" alt="Twitter" width="32" height="32" title="Twitter">';
+				}
+				return type === 'display' ?
+							'<a href="' + data + '">' + text + '</a>' :
+							data;
+			},
+		};
 
-	// CSV Parser
-	Papa.parse("list.csv", {
-                    download: true,
-					header: true,
-					skipEmptyLines: true,
-					delimiter: ",",
-                    complete: function (results) {
-                        if ( results.errors.length ) {
-                            console.error(results);
-                        }
-                        else {
-							let columns = [];
-							for (i=0; i<results.meta.fields.length; i++){
-								let name = results.meta.fields[i];
-								columns.push({
-									"data": name, 
-									"title": name,
-									"render": renders[name],
-									"className": classNames[name]
-								});
+		// Responsive classes per column
+		// https://datatables.net/extensions/responsive/examples/column-control/classes.html
+		let classNames = {
+			"Nombre": "all",
+			"¿Qué venden?": "min-tablet-l",
+			"Municipio": "desktop",
+			"Encuéntrales online": "desktop",
+			"Otro contacto online": "desktop"
+		};
+
+		let visibility = {
+			"Nombre": true,
+			"¿Qué venden?": true,
+			"Municipio": true,
+			"Encuéntrales online": false,
+			"Otro contacto online": true
+		};
+
+		// CSV Parser
+		Papa.parse("list.csv", {
+						download: true,
+						header: true,
+						skipEmptyLines: true,
+						delimiter: ",",
+						complete: function (results) {
+							if ( results.errors.length ) {
+								console.error(results);
 							}
-                            $('#main_list').DataTable( {
-								buttons:[
-									'searchPanes'
-								],
-								dom: 'fBtilp', // order of elements: https://datatables.net/reference/option/dom
-								data: results.data,
-								columns: columns,
-								language: language,
-								responsive: {
-									details: {
-										display: $.fn.dataTable.Responsive.display.childRowImmediate,
-										type: 'none',
-										target: ''
-									}
-								},
-								pageLength: 20,
-								lengthMenu: [ [20, 50, -1], [20, 50, "Todos"] ]
-							} );
-                        }
-                    }
-                });
-} );
-</script>
-</header>
+							else {
+								let columns = [];
+								for (let i=0; i<results.meta.fields.length; i++){
+									let name = results.meta.fields[i];
+									columns.push({
+										"data": name, 
+										"title": name,
+										"render": renders[name],
+										"className": classNames[name],
+										"visible": visibility[name]
+									});
+								}
+								$('#main_list').DataTable( {
+									buttons:[
+										'searchPanes'
+									],
+									dom: 'fBtilp', // order of elements: https://datatables.net/reference/option/dom
+									data: results.data,
+									columns: columns,
+									language: language,
+									responsive: {
+										details: {
+											display: $.fn.dataTable.Responsive.display.childRowImmediate,
+											type: 'none',
+											target: ''
+										}
+									},
+									pageLength: 20,
+									pagingType: "simple",
+									scrollToTop: true,
+									lengthMenu: [ [20, 50, -1], [20, 50, "Todos"] ]
+								} );
+							}
+						}
+					});
+	} );
+	</script>
+</head>
 
 <body>
-<h1>Compra Online Granada</h1>
-<h2>Pequeños comercios de la provincia de Granada con venta online y envío a domicilio</h2>
-<table id="main_list" class="display" style="width:100%">
-</table>
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #B9D2D2;">
+			<a class="navbar-brand mb-0 h1" href="#">
+				<img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+				Compra Online Granada
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+				  <li class="nav-item active">
+					<a class="nav-link" href="#">Inicio</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="#">Sobre nosotros</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="#">Contacto</a>
+				  </li>
+				</ul>
+			</div>
+
+			<a class="btn btn-primary" href="https://forms.gle/RqkHQ8u9Ecp21f8i8">Añadir comercio</a>
+		</nav>
+		<h2 class="text-center">Pequeños comercios de la provincia de Granada<br/> con venta online y envío a domicilio</h2>
+		<table id="main_list" class="table table-striped table-bordered dt-responsive"></table>
+
+		
+		<h5>Iniciativas similares</h5>
+			<ul>
+				<li><a href="https://haybarrio.com/">HayBarrio</a></li>
+				<li><a href="https://comprasarmilla.es/">Armilla - Compras Armilla</a></li>
+				<li><a href="https://parapandashopping.es/">Íllora - Parapanda Shopping</a></li>
+				<li><a href="https://ogijarescomercio.com/">Ogíjares - Centro Comercial Online</a></li>
+				<li>¿Conoces otro? ¡Escríbenos!</li>
+			</ul>
+		</div>
+	</div>
+	<footer class="footer">
+		<div class="container">
+			<p class="text-center">Made with ❤️ in Granada</p>
+			<div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+		</div>
+	</footer>
 </body>
 </html>
