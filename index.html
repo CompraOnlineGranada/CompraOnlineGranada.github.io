@@ -10,8 +10,28 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 	<style>
+	/*
+	COLORS 
+	     Primary: #b2ebf2
+	     Primary light: #e5ffff
+		 Primary dark: #81b9bf
+
+		 Secondary: #c51162
+		 Secondary light: #fd558f
+		 Secondary dark: #8e0038
+	*/
 	* {
 		font-family: 'Roboto', sans-serif;
+	}
+
+	.btn-primary {
+		color: #fff;
+		background-color: #c51162;
+		border-color: #c51162;
+	}
+
+	#main_list, #main_list_wrapper {
+		margin: 10px 0 10px 0;
 	}
 
 	/* search box */
@@ -107,13 +127,13 @@
 				data = data.trim();
 				let text = data;
 				if (data.includes("instagram")) {
-					text = '<img src="instagram.svg" alt="Instagram" width="32" height="32" title="Instagram">';
+					text = '<img src="images/instagram.svg" alt="Instagram" width="32" height="32" title="Instagram">';
 				}
 				else if (data.includes("facebook")) {
-					text = '<img src="facebook.svg" alt="Facebook" width="32" height="32" title="Facebook">';
+					text = '<img src="images/facebook.svg" alt="Facebook" width="32" height="32" title="Facebook">';
 				}
 				else if (data.includes("twitter")) {
-					text = '<img src="twitter.svg" alt="Twitter" width="32" height="32" title="Twitter">';
+					text = '<img src="images/twitter.svg" alt="Twitter" width="32" height="32" title="Twitter">';
 				}
 				return type === 'display' ?
 							'<a href="' + data + '">' + text + '</a>' :
@@ -186,13 +206,16 @@
 					});
 	} );
 	</script>
+	<!—- ShareThis BEGIN -—>
+	<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5fc26ba27bb23a0012fc1284&product=sticky-share-buttons" async="async"></script>
+	<!—- ShareThis END -—>
 </head>
 
 <body>
 	<div class="container">
-		<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #B9D2D2;">
+		<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #b2ebf2;">
 			<a class="navbar-brand mb-0 h1" href="#">
-				<img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+				<img src="images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
 				Compra Online Granada
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -216,10 +239,17 @@
 			<a class="btn btn-primary" href="https://forms.gle/RqkHQ8u9Ecp21f8i8">Añadir comercio</a>
 		</nav>
 		<h2 class="text-center">Pequeños comercios de la provincia de Granada<br/> con venta online y envío a domicilio</h2>
+		
+		<div class="sharethis-inline-share-buttons"></div>
+
 		<table id="main_list" class="table table-striped table-bordered dt-responsive"></table>
 
-		
-		<h5>Iniciativas similares</h5>
+		<h3>Sobre nosotros</h3>
+
+		<h3>Contáctanos</h3>
+
+
+		<h3>Iniciativas similares</h3>
 			<ul>
 				<li><a href="https://haybarrio.com/">HayBarrio</a></li>
 				<li><a href="https://comprasarmilla.es/">Armilla - Compras Armilla</a></li>
@@ -232,7 +262,7 @@
 	<footer class="footer">
 		<div class="container">
 			<p class="text-center">Made with ❤️ in Granada</p>
-			<div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+			<p class="text-center">🎨 Icons by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a></p>
 		</div>
 	</footer>
 </body>
