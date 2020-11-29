@@ -35,6 +35,18 @@
 		border-color: #c51162;
 	}
 
+	/* share card */
+	#share_card {
+		margin: 15px 0;
+	}
+
+	#copy_link {
+		width: 60%;
+		margin: 0 auto;
+		padding-top: 12px;
+	}
+
+	/* table */
 	#main_list, #main_list_wrapper {
 		margin: 10px 0 10px 0;
 	}
@@ -43,7 +55,9 @@
 	#main_list_filter {
 		float: left;
 		text-align: left;
+		margin-bottom: 8px;
 	}
+	
 
 	/* pagination */
 	#main_list_paginate {
@@ -191,11 +205,11 @@
 										"visible": visibility[name]
 									});
 								}
-								$('#main_list').DataTable( {
+								let table = $('#main_list').DataTable( {
 									buttons:[
 										'searchPanes'
 									],
-									dom: 'fBtilp', // order of elements: https://datatables.net/reference/option/dom
+									dom: 'Btilp', // order of elements: https://datatables.net/reference/option/dom
 									data: results.data,
 									columns: columns,
 									language: language,
@@ -211,9 +225,23 @@
 									scrollToTop: true,
 									lengthMenu: [ [20, 50, -1], [20, 50, "Todos"] ]
 								} );
+								$('#main_list_searchbox').on( 'keyup click', function () {
+									table.search($('#main_list_searchbox').val()).draw();
+								} );
 							}
 						}
-					});
+			});
+
+		$('#copy_link_btn').click(function(){
+			var copyText = document.getElementById("copy_link_txt");
+
+			/* Select the text field */
+			copyText.select();
+			copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+			/* Copy the text inside the text field */
+			document.execCommand("copy");
+		});
 	} );
 	</script>
 	<!—- ShareThis BEGIN -—>
@@ -223,6 +251,7 @@
 
 <body>
 	<div id="home" class="container">
+		<!-- NAVBAR -->
 		<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #b2ebf2;">
 			<a class="navbar-brand mb-0 h1" href="#">
 				<img src="images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
@@ -250,17 +279,34 @@
 		</nav>
 		
 		
-		
-		<div class="card text-center">
+		<!-- SHARE THIS LIST -->
+		<div id="share_card" class="card text-center">
 			<div class="card-body">
 			  <h3 class="card-title">Pequeños comercios de la provincia de Granada con venta online y envío a domicilio</h3>
 			  <p class="card-text">Comparte esta lista para dar más visibilidad a los más de 500 pequeños comercios que ya se han unido</p>
+			  
 			  <div class="sharethis-inline-share-buttons"></div>
+
+			  <div id="copy_link" class="input-group mb-3">
+				<input id="copy_link_txt" type="text" readonly class="form-control" value="http://bit.ly/CompraOnlineEnGranada" aria-label="Enlace para compartir" aria-describedby="copy_link_btn">
+				<div class="input-group-append">
+				  <button class="btn btn-primary" type="button" id="copy_link_btn">Copiar</button>
+				</div>
+			  </div>
 			</div>
 		  </div>
 
+		<!-- LIST -->
+		<div id="main_list_filter" class="dataTables_filter input-group input-group-lg">
+			<div class="input-group-prepend">
+			  <span class="input-group-text" id="inputGroup-sizing-lg">Buscar</span>
+			</div>
+			<input id="main_list_searchbox" type="search" class="form-control form-control-sm" placeholder="juguetes, joyería, ropa..." aria-label="Campo de búsqueda" aria-describedby="inputGroup-sizing-lg">
+		</div>
+
 		<table id="main_list" class="table table-striped table-bordered dt-responsive"></table>
 
+		<!-- ABOUT -->
 		<div id="about" class="row">
 			<div class="col-sm">
 				<div class="card">
@@ -283,17 +329,18 @@
 			<div class="col-sm">
 				<div class="card">
 					<h4 class="card-header">Sobre nosotros</h4>
-					<div class="card-body">
-						<img src="images/Anna.png" class="card-img-bottom" alt="Foto de Anna" />
-						<p class="text-center">Anna <a href="https://twitter.com/annalogik"><img src="images/twitter.svg" width="12" height="12" alt="@annalogik"/></a> <a href="https://www.linkedin.com/in/annalogik/"><img src="images/linkedin.svg" width="12" height="12" alt="LinkedIn"/></a></p>
+					<div class="card-body" style="text-align: center;">
+						<img src="images/Anna.png" class="card-img-bottom" alt="Foto de Anna" style="max-width: 250px;" />
+						<p class="text-center" style="font-size: 32px">Anna <a href="https://twitter.com/annalogik"><img src="images/twitter.svg" width="32" height="32" alt="@annalogik"/></a> <a href="https://www.linkedin.com/in/annalogik/"><img src="images/linkedin.svg" width="32" height="32" alt="LinkedIn"/></a></p>
 						
-						<img src="images/Manuel.png" class="card-img-bottom" alt="Foto de Manuel" />	
-						<p class="text-center">Manuel <a href="https://twitter.com/draxus"><img src="images/twitter.svg" width="12" height="12" alt="@draxus"/></a> <a href="https://www.linkedin.com/in/draxus/"><img src="images/linkedin.svg" width="12" height="12" alt="LinkedIn"/></a></p>
+						<img src="images/Manuel.png" class="card-img-bottom" alt="Foto de Manuel" style="max-width: 250px;" />	
+						<p class="text-center" style="font-size: 32px">Manuel <a href="https://twitter.com/draxus"><img src="images/twitter.svg" width="32" height="32" alt="@draxus"/></a> <a href="https://www.linkedin.com/in/draxus/"><img src="images/linkedin.svg" width="32" height="32" alt="LinkedIn"/></a></p>
 					</div>
 				</div>
 			</div>
 		</div>
 
+		<!-- CONTACT -->
 		<div id="contact" class="row">
 			<div class="col-sm">
 				<div class="card">
@@ -326,11 +373,11 @@
 			</div>
 		</div>
 	</div>
+	<!-- FOOTER -->
 	<footer class="footer">
 		<div class="container">
 			<p class="text-center">Made with ❤️ in Granada</p>
 			<p class="text-center">🎨 Icons by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a></p>
-			<p class="text-center">🍪 Cookie-free website. We value your privacy.</p>
 		</div>
 	</footer>
 </body>
