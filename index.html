@@ -3,7 +3,7 @@
 <head>
 	<meta charset = "utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta property="og:title" content="Join the best company in the world!" />
+	<meta property="og:title" content="Compra Online en Granada" />
 	<meta property="og:url" content="http://bit.ly/CompraOnlineEnGranada" />
 	<meta property="og:image" content="https://compraonlinegranada.github.io/images/imagen_compartir.png" />
 	<meta property="og:description" content="Compra Online en Granada - Listado de pequeñas tiendas de la provincia de Granada" />
@@ -217,51 +217,111 @@
 </head>
 
 <body>
-	<div class="container">
+	<div id="home" class="container">
 		<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #b2ebf2;">
 			<a class="navbar-brand mb-0 h1" href="#">
 				<img src="images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
 				Compra Online Granada
 			</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 				  <li class="nav-item active">
-					<a class="nav-link" href="#">Inicio</a>
+					<a class="nav-link" href="#home">Inicio</a>
 				  </li>
 				  <li class="nav-item">
-					<a class="nav-link" href="#">Sobre nosotros</a>
+					<a class="nav-link" href="#about">Sobre esta lista</a>
 				  </li>
 				  <li class="nav-item">
-					<a class="nav-link" href="#">Contacto</a>
+					<a class="nav-link" href="#contact">Contacto</a>
 				  </li>
 				</ul>
 			</div>
 
 			<a class="btn btn-primary" href="https://forms.gle/RqkHQ8u9Ecp21f8i8">Añadir comercio</a>
 		</nav>
-		<h2 class="text-center">Pequeños comercios de la provincia de Granada<br/> con venta online y envío a domicilio</h2>
 		
-		<div class="sharethis-inline-share-buttons"></div>
+		
+		
+		<div class="card text-center">
+			<div class="card-body">
+			  <h3 class="card-title">Pequeños comercios de la provincia de Granada con venta online y envío a domicilio</h3>
+			  <p class="card-text">Comparte esta lista para darle más visibilidad a los pequeños comercios</p>
+			  <div class="sharethis-inline-share-buttons"></div>
+			</div>
+			<div class="card-footer text-muted">
+			  Más de 500 comercios ya se han unido
+			</div>
+		  </div>
 
 		<table id="main_list" class="table table-striped table-bordered dt-responsive"></table>
 
-		<h3>Sobre nosotros</h3>
+		<div id="about" class="row">
+			<div class="col-sm">
+				<div class="card">
+					<h4 class="card-header">Sobre esta lista</h4>
+					<div class="card-body">
+						<p class="card-text">
+							Esta lista empezó con poco más de 10 recomendaciones entre amigos. 
+							Publicamos el formulario para recibir más sugerencias de amigos y conocidos, 
+							¡y se hizo viral! Nos llegaron más de 500 sugerencias en menos de una semana. 
+							Esperamos que esta lista os sirva para seguir comprando en vuestras tiendas de toda la vida. 
+							Ponéos en contacto con vuestras tenderas y tenderos, ¡están deseando volver a atenderos!
+							El diario Ideal nos hizo una entrevista, <a href="https://www.ideal.es/granada/guia-comercio-granadino-tiendas-coronavirus-covid-20201116114954-nt.html">podéis leerla aquí</a>.
+							<br/><br/>
+							Te animamos a compartir esta imagen para que la lista llegue a más gente.
+						</p>
+					</div>
+					<a href="images/imagen_compartir.png"><img src="images/imagen_compartir.png" class="card-img-bottom" alt="Imagen para compartir en redes" /></a>
+				</div>
+			</div>
+			<div class="col-sm">
+				<div class="card">
+					<h4 class="card-header">Sobre nosotros</h4>
+					<div class="card-body">
+						<img src="images/Anna.png" class="card-img-bottom" alt="Foto de Anna" />
+						<p class="text-center">Anna <a href="https://twitter.com/annalogik"><img src="images/twitter.svg" width="12" height="12" alt="@annalogik"/></a> <a href="https://www.linkedin.com/in/annalogik/"><img src="images/linkedin.svg" width="12" height="12" alt="LinkedIn"/></a></p>
+						
+						<img src="images/Manuel.png" class="card-img-bottom" alt="Foto de Manuel" />	
+						<p class="text-center">Manuel <a href="https://twitter.com/draxus"><img src="images/twitter.svg" width="12" height="12" alt="@draxus"/></a> <a href="https://www.linkedin.com/in/draxus/"><img src="images/linkedin.svg" width="12" height="12" alt="LinkedIn"/></a></p>
+					</div>
+				</div>
+			</div>
+		</div>
 
-		<h3>Contáctanos</h3>
-
-
-		<h3>Iniciativas similares</h3>
-			<ul>
-				<li><a href="https://haybarrio.com/">HayBarrio</a></li>
-				<li><a href="https://comprasarmilla.es/">Armilla - Compras Armilla</a></li>
-				<li><a href="https://parapandashopping.es/">Íllora - Parapanda Shopping</a></li>
-				<li><a href="https://ogijarescomercio.com/">Ogíjares - Centro Comercial Online</a></li>
-				<li>¿Conoces otro? ¡Escríbenos!</li>
-			</ul>
+		<div id="contact" class="row">
+			<div class="col-sm">
+				<div class="card">
+					<h4 class="card-header">Contáctanos</h4>
+					<div class="card-body">
+					<h5 class="card-title">¿Falta algún comercio en la lista?</h5>
+					<p class="card-text">Recuerda que debe ser de la provincia de Granada y ofrecer venta online y envío a domicilio.</p>
+					<a href="https://forms.gle/RqkHQ8u9Ecp21f8i8" class="btn btn-primary">Añadir comercio</a>
+					</div>
+					<div class="card-body">
+					<h5 class="card-title">¿Tienes alguna otra pregunta o comentario?</h5>
+					<a href="https://forms.gle/iPTtYoNqTyyrPnS59" class="btn btn-primary">Escríbenos un mensaje</a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-sm">
+				<div class="card">
+					<h4 class="card-header">Iniciativas similares</h4>
+					<div class="card-body">
+						<ul>
+							<li><a href="https://haybarrio.com/">HayBarrio</a></li>
+							<li><a href="https://comprasarmilla.es/">Armilla - Compras Armilla</a></li>
+							<li><a href="https://parapandashopping.es/">Íllora - Parapanda Shopping</a></li>
+							<li><a href="https://ogijarescomercio.com/">Ogíjares - Centro Comercial Online</a></li>
+						</ul>
+						¿Conoces otra iniciativa? <a href="https://forms.gle/iPTtYoNqTyyrPnS59" class="btn btn-primary">Escríbenos un mensaje</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<footer class="footer">
