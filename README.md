@@ -38,6 +38,8 @@ Siguiendo nuestro principio de XKISS nos dimos cuenta de que la <b>máxima prior
   <li>Ponerlo muy fácil para que la gente comparta con un tap/click (<i>¡Es que nadie piensa en nuestros padres!</i>)</li>
 </ul>
 
+## Implementación: solucionando los problemas de los usuarios
+
 ### Ideas que se barajaron o que nos propusieron y rápidamente descartamos
 
 <ul>
@@ -52,4 +54,16 @@ Siguiendo nuestro principio de XKISS nos dimos cuenta de que la <b>máxima prior
 
 Al final decidimos usar https://www.datatables.net/ para presentar la lista ya que cargaba deprisa y buscaba aún más deprisa. Era fácil de maquetar ya que usa Bootstrap y podríamos montar una web con buscador en cuestión de horas. Esto resuelve nuestro primer problema de nuestros usuarios. Además se puede traducir todo lo que sale por pantalla. Luego añadimos el pequeño menú para compartir en redes sociales y apps de mensajería para resolver el segundo problema.
 
+## Implementación: solucionando los problemas de los creadores
 
+Recibimos bastantes más de 500 tiendas a través del formulario, y los datos no llegaban listos para ser publicados ya que solían estar incompletos: nos daban el nombre de la tienda y el municipio, pero ningún enlace a redes sociales. O los enlaces estaban mal, o se habían equivocado dándonos el nombre de la tienda en la red social. Para cada tienda, debíamos revisar manualmente la información comprobando que de verdad era una tienda en la provincia de Granada, que aceptaban pedidos y repartían a domicilio... y luego corregir erratas y encontrar los perfiles sociales correctos. Esto requería tanto tiempo de investigación que antes de que terminase la semana ya contábamos con la ayuda inestimable de dos personas más para procesar las tiendas nuevas que iban llegando. 
+
+Manuel además creó una serie de macros para facilitar la creación de las URLS que se usaban en la tabla y enlazar los nombres de los comercios, y reducir así el tiempo manual de procesamiento. 
+
+Al final conseguimos tener un método interno para procesar las tiendas lo más deprisa posible, manteniendo la lista maestra en la hoja de cálculo de la que tomamos los datos para la web aquí en GitHub. Otro punto para XKISS.
+
+# Conclusiones
+
+¡Nos lo hemos pasado muy bien con este proyecto! Descubriendo un sin fin de pequeños comercios de nuestra provincia y siendo efectivos con lo que podíamos hacer en un tiempo limitado, centrándonos siempre en ponérselo fácil a los usuarios de la lista. Los comercios son los protagonistas y necesitan toda la visibilidad que pudiésemos darles.
+
+Muchos Granadinos y Granadinas no habían pensado en pedir por web/teléfono a sus comercios de toda la vida hasta que los vieron en la lista. Sólo necesitaban ver que las tiendas tenían también un escaparate online, que existe una manera distinta de contactar con sus tiendas de confianza. La lista fue el empujoncito que necesitaban para animarse y hacer un pedido a un negocio local, sin salir de casa. 
