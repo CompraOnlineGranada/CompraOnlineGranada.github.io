@@ -16,7 +16,7 @@ El código de este repositorio está disponible bajo la <a href="https://es.wiki
 
 Los datos (listado de comercios) están disponibles bajo la <a href="https://es.wikipedia.org/wiki/Licencia_Abierta_de_Bases_de_Datos">licencia ODbl</a>.
 
-# Acerca de este pequeño projecto
+# Acerca de este pequeño proyecto
 
 Este proyecto se ha hecho con un presupuesto total de 0€, y ha sobrepasado todas nuestras expectativas.
 
