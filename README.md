@@ -5,9 +5,10 @@ Web: https://compraonlinegranada.github.io
 
 Hecho con ❤️ en Granada por:
 
-<a href="https://www.linkedin.com/in/draxus/">Manuel Martín</a> 
-<a href="https://www.linkedin.com/in/annalogik/">Anna P. Martínez</a> 
-
+<ul>
+  <li><a href="https://www.linkedin.com/in/draxus/">Manuel Martín</a></li>
+  <li><a href="https://www.linkedin.com/in/annalogik/">Anna P. Martínez</a> </li>
+</ul>
 
 # Software y datos libres
 
@@ -37,7 +38,8 @@ Siguiendo nuestro principio de XKISS nos dimos cuenta de que la máxima priorida
   <li>Ponerlo muy fácil para que la gente comparta con un tap/click (<i>¡Es que nadie piensa en nuestros padres!</i>)</li>
 </ul>
 
-Ideas que se barajaron o que nos propusieron y rápidamente descartamos:
+### Ideas que se barajaron o que nos propusieron y rápidamente descartamos
+
 <ul>
   <li>Montar una web con Wordpress: queríamos algo super, super sencillo de montar.</li>
   <li>Hacer una app: no estamos locos y no queremos "encerrar" la información en una app.</li>
@@ -45,6 +47,8 @@ Ideas que se barajaron o que nos propusieron y rápidamente descartamos:
   <li>Usar Airtable para mostrar la lista: se descartó porque no está traducida la interfaz y nuestros usuarios no sabrían usar sus filtros</li>
   <li>Clasificar las tiendas en categorías y ofrecer un filtro usándolas: al hacer el ejercicio de intentar clasificar las tiendas salieron más de 50 categorías. No queremos que buscar la categoría sea ahora el problema...</li>
 </ul>
+
+### Implementación actual
 
 Al final decidimos usar https://www.datatables.net/ para presentar la lista ya que cargaba deprisa y buscaba aún más deprisa. Era fácil de maquetar ya que usa Bootstrap y podríamos montar una web con buscador en cuestión de horas. Esto resuelve nuestro primer problema de nuestros usuarios. Además se puede traducir todo lo que sale por pantalla. Luego añadimos el pequeño menú para compartir en redes sociales y apps de mensajería para resolver el segundo problema.
 
