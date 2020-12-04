@@ -28,17 +28,18 @@ Este proyecto se planteó desde el principio como XKISS: Extreme <a href="https:
 
 La lista comenzó su andadura como una simple hoja de cálculo donde ibamos listando los comercios. Inicialmente esto era lo más sencillo puesto que es rápido de crear, fácil de actualizar y de navegar. También creamos un enlace corto para facilitar que la gente compartiera ese link, y no el enlace directo a la lista que no es amigable para los humanos. Pero cuando superó los 100 comercios, nos dimos cuenta de que:
 <ul>
-  <li>La gente no sabe compartir URLs y no se fijan en los enlaces cortos</li>
-  <li>La gente no sabe buscar en hojas de cálculo</li>
-</ul>
-
-Siguiendo nuestro principio de XKISS nos dimos cuenta de que la <b>máxima prioridad</b> era solucionar dos problemas que tenían los usuarios de la lista:
-<ul>
-  <li>Poner la lista en un formato donde se pudiese buscar de algún modo. Lo importante es encontrar rápidamente la información.</li>
-  <li>Ponerlo muy fácil para que la gente comparta con un tap/click (<i>¡Es que nadie piensa en nuestros padres!</i>)</li>
+  <li>❌ La gente no sabe compartir URLs y no se fijan en los enlaces cortos</li>
+  <li>❌ La gente no sabe buscar en hojas de cálculo</li>
 </ul>
 
 ## Implementación: solucionando los problemas de los usuarios
+
+Siguiendo nuestro principio de XKISS nos dimos cuenta de que la <b>máxima prioridad</b> era solucionar dos problemas que tenían los usuarios de la lista:
+<ul>
+  <li>✔️ Poner la lista en un formato donde se pudiese buscar de algún modo. Lo importante es encontrar rápidamente la información.</li>
+  <li>✔️ Ponerlo muy fácil para que la gente comparta con un tap/click (<i>¡Es que nadie piensa en nuestros padres!</i>)</li>
+</ul>
+
 
 ### Ideas que se barajaron o que nos propusieron y rápidamente descartamos
 
