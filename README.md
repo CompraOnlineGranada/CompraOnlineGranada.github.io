@@ -20,7 +20,7 @@ Los datos (listado de comercios) están disponibles bajo la <a href="https://es.
 
 Este proyecto se ha hecho con un presupuesto total de 0€, y ha sobrepasado todas nuestras expectativas.
 
-Comenzamos con una pequeña lista de comercios que nos habíamos recomendado el uno al otro y pronto creamos un formulario para que nuestras amistades y familia pudiesen sugerir alguna tienda más. Lo que no sabíamos es que nuestra lista iba a hacerse vira...¡en menos de una semana! Un mes después de empezar el proyecto, la lista tiene más de 500 tiendas.
+Comenzamos con una pequeña lista de comercios que nos habíamos recomendado el uno al otro y pronto creamos un formulario para que nuestras amistades y familia pudiesen sugerir alguna tienda más. Lo que no sabíamos es que nuestra lista iba a hacerse viral...¡en menos de una semana! Un mes después de empezar el proyecto, la lista tiene más de 500 tiendas.
 
 ## Metodología de desarrollo
 
@@ -32,7 +32,7 @@ La lista comenzó su andadura como una simple hoja de cálculo donde ibamos list
   <li>La gente no sabe buscar en hojas de cálculo</li>
 </ul>
 
-Siguiendo nuestro principio de XKISS nos dimos cuenta de que la máxima prioridad era solucionar dos problemas que tenían los usuarios de la lista:
+Siguiendo nuestro principio de XKISS nos dimos cuenta de que la <b>máxima prioridad</b> era solucionar dos problemas que tenían los usuarios de la lista:
 <ul>
   <li>Poner la lista en un formato donde se pudiese buscar de algún modo. Lo importante es encontrar rápidamente la información.</li>
   <li>Ponerlo muy fácil para que la gente comparta con un tap/click (<i>¡Es que nadie piensa en nuestros padres!</i>)</li>
